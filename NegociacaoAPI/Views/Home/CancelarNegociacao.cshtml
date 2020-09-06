@@ -1,0 +1,30 @@
+﻿@model NegociacaoAPI.ViewModels.CancelarNegociacaoViewModel
+
+@{
+    ViewData["Title"] = "CancelarNegociacao";
+}
+
+<h1>Cancelar Negociacao</h1>
+
+<h3>Deseja cancelar a negociação?</h3>
+<div class="col-md-4">
+    <form asp-action="CancelarNegociacao">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="cpf" class="control-label"></label>
+            <input asp-for="cpf" class="form-control" readonly />
+            <span asp-validation-for="cpf" class="text-danger"></span>
+        </div>
+        <div class="invisible">
+            <label asp-for="acordoId" class="control-label"></label>
+            <input asp-for="acordoId" class="form-control" readonly />
+            <span asp-validation-for="acordoId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Cancelar Negociação" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+<div>
+    <a asp-action="Index">Voltar ao início</a>
+</div>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<NegociacaoAPI.ViewModels.CPFsListadosViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tomadores</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cpf)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cpf)
+            </td>
+            <td>
+                @Html.ActionLink("Consultar dívida", "ConsultarDivida", new { cpf= item.cpf })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

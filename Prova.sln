@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MontagemHTML", "MontagemHTML\MontagemHTML.csproj", "{1A0952F2-A41E-415E-9289-E525EC6F02B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MontagemHTML", "MontagemHTML\MontagemHTML.csproj", "{1A0952F2-A41E-415E-9289-E525EC6F02B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vetor", "Vetor\Vetor.csproj", "{307DBC1D-DD5D-4D1E-93F3-AFF7DDDC4A69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vetor", "Vetor\Vetor.csproj", "{307DBC1D-DD5D-4D1E-93F3-AFF7DDDC4A69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votos", "Votos\Votos.csproj", "{0FB8A9BF-7C92-46A1-8BC3-3AF87968E2A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Votos", "Votos\Votos.csproj", "{0FB8A9BF-7C92-46A1-8BC3-3AF87968E2A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NegociacaoAPI", "NegociacaoAPI\NegociacaoAPI.csproj", "{CA4E1430-2117-4FF6-84F8-7C40323CD7AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NegociacaoAPI", "NegociacaoAPI\NegociacaoAPI.csproj", "{CA4E1430-2117-4FF6-84F8-7C40323CD7AA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Questao_2", "Questao_2", "{2AD87B83-7318-4A5A-A431-D02182F365CF}"
 EndProject

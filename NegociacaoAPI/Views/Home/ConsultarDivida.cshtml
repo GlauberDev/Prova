@@ -1,0 +1,34 @@
+﻿@model NegociacaoAPI.ViewModels.ConsultarDividaViewModel
+
+@{
+    ViewData["Title"] = "Consultar Divida";
+}
+
+<h1>Consultar Divida</h1>
+
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cpf)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cpf)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.divida)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.divida)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dataAtualizacao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dataAtualizacao)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Simular negociação", "SimularNegociacao", new {cpf = Model.cpf}) |
+    <a asp-action="Index">Voltar ao início</a>
+</div>
