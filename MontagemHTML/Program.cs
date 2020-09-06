@@ -35,11 +35,14 @@ namespace MontagemHTML
             Html = new StringBuilder();
             ImprimirMenus(null);
 
-            //Retorna o HTML
             Console.WriteLine(Html);
 
         }
 
+        /// <summary>
+        /// Imprime os menus recursivamente.
+        /// </summary>
+        /// <param name="pMenuPai">Menu pai, cujos filhos, caso existam, serão impressos nesta chamada. Atribuir "null" caso este menu pai seja o raiz (caso esta seja a primeira chamada).</param>
         static void ImprimirMenus(Menu pMenuPai)
         {
             string? lHref = null;
@@ -51,27 +54,28 @@ namespace MontagemHTML
             if (pMenuPai == null)//Se o menu pai for o raiz
             {
                 lMenusFilhos = Menus.Where(x => x.ID_MENU_PAI == 0).ToList();
-                lHref = "javascript:";
-                lTagsUlRaiz = " id = \"treemenu1\" class=\"treeview\"";
+                lHref = "javascript:"; //Imprimir isto na tag <a> em vez do link para a página ASP
+                lTagsUlRaiz = " id = \"treemenu1\" class=\"treeview\""; //Imprimir isto como atributos da <ul>
                 lUltimoLiRaiz = "<li>" +
                     "\r\n<a href=\"javascript: sair()\">Sair</a>" +
                     "\r\n</li>" +
-                    "\r\n";
+                    "\r\n";//Imprimir o link Sair no final (apenas)
             }
+            //Senão, apenas a variável lMenusFilhos é carregada
             else
             {
                 lMenusFilhos = Menus.Where(x => x.ID_MENU_PAI == pMenuPai.ID_MENU).ToList();
             }
 
-
-            if (lMenusFilhos.Count() > 0)
+            //pMenuAImprimir já teve seu <a> impresso (caso não seja o raiz)
+            if (lMenusFilhos.Count() > 0)//Apenas se pMenuAImprimir tiver filhos:
             {
-                Html.AppendLine(string.Format("<ul{0}>", lTagsUlRaiz ?? ""));
-                foreach (Menu fFilho in lMenusFilhos)
+                Html.AppendLine(string.Format("<ul{0}>", lTagsUlRaiz ?? ""));//<ul> é aberta
+                foreach (Menu fFilho in lMenusFilhos)//para cada filho:
                 {
                     Html.AppendLine("<li>");
                     Html.AppendLine(string.Format("<a href=\"{0}\">{1}</a>", lHref ?? string.Format("{0}.aspx", TratarNomeAspx(fFilho.DESCRICAO_MENU)), fFilho.DESCRICAO_MENU));
-                    ImprimirMenus(fFilho);
+                    ImprimirMenus(fFilho);//Chamada recursiva deste método, passando cada um dos filhos como parâmetro
                     Html.AppendLine("</li>");
                 }
                 Html.AppendLine(string.Format("{0}</ul>", lUltimoLiRaiz));
@@ -80,9 +84,12 @@ namespace MontagemHTML
 
         }
 
+        /// <summary>
+        /// Gera um número de ID disponível com base na lista global de menus
+        /// </summary>
         static int GerarNovoIdMenu()
         {
-            var lMenu = Menus.OrderBy(x => x.ID_MENU).LastOrDefault();
+            var lMenu = Menus.OrderBy(x => x.ID_MENU).LastOrDefault();//Maior ID atualmente usado
             if (lMenu != null)
                 return lMenu.ID_MENU + 1;
             else
@@ -94,6 +101,9 @@ namespace MontagemHTML
             return Menus.FirstOrDefault(x => x.DESCRICAO_MENU == pDescricao);
         }
 
+        /// <summary>
+        /// Trata a string recebida para que seja usada como nome de página ASP fictício, removendo acentos e espaços
+        /// </summary>
         static string TratarNomeAspx(string pNome)
         {
             pNome = pNome.Replace(" ", "");
